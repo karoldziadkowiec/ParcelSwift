@@ -1,25 +1,31 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 class ParcelSwift {
     JFrame frame;
     JPanel mainPanel, upperPanel;
-    JLabel logoLabel;
+    JLabel logoLabel, instructionLabel;
     JButton sendPackageButton, pickUpPackageButton, adminPanelButton;
     Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
+
     ParcelSwift() {
         initializeFrame();
         addComponents();
-
+        ShowNewWindow();
         frame.setVisible(true);
     }
-    private void initializeFrame() {
+
+    public void initializeFrame() {
 
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
         ImageIcon icon = new ImageIcon("icon.png");
         frame.setIconImage(icon.getImage());
+        frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(null);
 
@@ -43,13 +49,18 @@ class ParcelSwift {
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
         logoLabel.setFont(logoFont);
-        logoLabel.setBounds(205, 20, 350, 50); // Ustawiamy położenie i rozmiar etykiety
+        logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
 
         ImageIcon logoIcon = new ImageIcon("logo.png");
         JLabel logoImageLabel = new JLabel(logoIcon);
-        logoImageLabel.setBounds(260, 80, logoIcon.getIconWidth(), logoIcon.getIconHeight());
+        logoImageLabel.setBounds(285, 85, logoIcon.getIconWidth(), logoIcon.getIconHeight());
         mainPanel.add(logoImageLabel);
+
+        instructionLabel = new JLabel("Select the service want to use.");
+        instructionLabel.setFont(appFont);
+        instructionLabel.setBounds(175, 225, 450, 50);
+        mainPanel.add(instructionLabel);
 
         sendPackageButton = new JButton("Send package");
         sendPackageButton.setLayout(null);
@@ -70,19 +81,36 @@ class ParcelSwift {
         adminPanelButton = new JButton("Admin panel");
         adminPanelButton.setLayout(null);
         adminPanelButton.setBounds(260, 400, 180, 30);
-        adminPanelButton.setBackground(new Color(43, 43, 43));
-        adminPanelButton.setForeground(Color.WHITE);
+        adminPanelButton.setBackground(Color.WHITE);
+        adminPanelButton.setForeground(new Color(43, 43, 43));
         adminPanelButton.setFont(appFont);
         mainPanel.add(adminPanelButton);
 
     }
-    public JFrame getFrame() {
-        return frame;
+
+    private void ShowNewWindow() {
+        sendPackageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new SendPackageTelNum();
+            }
+        });
+        pickUpPackageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new PickUpPackageTelNum();
+            }
+        });
+        adminPanelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new AdminLoginPanel();
+            }
+        });
     }
 
     public static void main(String[] args) {
         ParcelSwift mainWindow = new ParcelSwift();
-        CenterWindow.centerWindowOnScreen(mainWindow.getFrame());
     }
 
 }
