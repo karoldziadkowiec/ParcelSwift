@@ -7,7 +7,7 @@ Technologies used in the project: Java.
 Main Window:
 ![Main Window](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/1.png)
 
-<u>SENDING A PACKAGE:<u>
+SENDING A PACKAGE<br/>
 Entering a phone number:
 ![Entering a phone number](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/2.png)
 
@@ -29,7 +29,7 @@ Admin panel:
 Parcel locker data in the admin panel after putting the package in the locker:
 ![Parcel locker data in the admin panel](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/8.png)
 
-<u>PICKING UP A PACKAGE:<u>
+PICKING UP A PACKAGE<br/>
 Entering a phone number:
 ![Entering a phone number:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/9.png)
 
