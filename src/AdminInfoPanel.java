@@ -15,6 +15,7 @@ public class AdminInfoPanel {
 
     private java.util.List<Shipment> shipments;
     String PIN = null;
+
     public AdminInfoPanel(java.util.List<Shipment> shipments, String pin) {
 
         this.shipments = shipments;
@@ -24,6 +25,7 @@ public class AdminInfoPanel {
         addComponents();
         ShowNewWindow();
         frame.setVisible(true);
+
     }
 
     private void initializeFrame() {
@@ -87,16 +89,19 @@ public class AdminInfoPanel {
             logoutButton.setForeground(Color.WHITE);
             logoutButton.setFont(appFont);
             mainPanel.add(logoutButton);
+
         }
 
 
     private void ShowNewWindow() {
+
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new AdminLoginPanel(shipments);
             }
         });
+
     }
 
     public static void main(String[] args) {

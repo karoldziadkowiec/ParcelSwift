@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
-public class SendPackageLocker {
+
+public class PickUpPackageLocker {
 
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
@@ -14,14 +14,13 @@ public class SendPackageLocker {
     private int secondsLeft = 30;
 
     private java.util.List<Shipment> shipments;
-    String phoneNumber = null, code = null, size = null;
+    String phoneNumber = null, code = null;
 
-    public SendPackageLocker(java.util.List<Shipment> shipments, String phoNum, String cod, String sizee) {
+    public PickUpPackageLocker(java.util.List<Shipment> shipments, String phoNum, String cod) {
 
         this.shipments = shipments;
         phoneNumber = phoNum;
         code = cod;
-        size = sizee;
 
         initializeFrame();
         addComponents();
@@ -78,12 +77,12 @@ public class SendPackageLocker {
         instructionLabel.setBounds(215, 255, 450, 50);
         mainPanel.add(instructionLabel);
 
-        instruction2Label = new JLabel("Put the package in the locker.");
+        instruction2Label = new JLabel("Pick up the package from the locker.");
         instruction2Label.setFont(appFont);
-        instruction2Label.setBounds(205, 285, 450, 50);
+        instruction2Label.setBounds(170, 285, 450, 50);
         mainPanel.add(instruction2Label);
 
-        confirmButton = new JButton("Parcel inside");
+        confirmButton = new JButton("Parcel outside");
         confirmButton.setBounds(470, 390, 200, 50);
         confirmButton.setBackground(new Color(43, 43, 43));
         confirmButton.setForeground(Color.WHITE);
@@ -142,20 +141,21 @@ public class SendPackageLocker {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new SendPackageFinish(shipments, phoneNumber, code, size);
+                new PickUpPackageFinish(shipments, phoneNumber, code);
             }
         });
 
         retryButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new SendPackageLocker(shipments, phoneNumber, code, size);
+                new PickUpPackageLocker(shipments, phoneNumber, code);
             }
         });
+
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new SendPackageSize(shipments, phoneNumber, code);
+                new PickUpPackageCode(shipments, phoneNumber);
             }
         });
 

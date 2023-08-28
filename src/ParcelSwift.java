@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 class ParcelSwift {
     JFrame frame;
@@ -15,6 +13,7 @@ class ParcelSwift {
     private java.util.List<Shipment> shipments = new java.util.ArrayList<>();
 
     ParcelSwift() {
+
         initializeFrame();
         addComponents();
         ShowNewWindow();
@@ -114,18 +113,21 @@ class ParcelSwift {
                 new SendPackageTelNum(shipments);
             }
         });
+
         pickUpPackageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new PickUpPackageTelNum();
+                new PickUpPackageTelNum(shipments);
             }
         });
+
         adminPanelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new AdminLoginPanel(shipments);
             }
         });
+
     }
 
     public static void main(String[] args) {
@@ -136,6 +138,7 @@ class ParcelSwift {
                     ", Code: " + shipment.code + ", TelNumOfSender: " + shipment.telNumOfSender +
                     ", TelNumOfReceiver: " + shipment.telNumOfReceiver);
         }
+
     }
 
 }

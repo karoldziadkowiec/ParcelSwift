@@ -95,29 +95,31 @@ public class MainPanel {
     }
 
     private void ShowNewWindow() {
+
         sendPackageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new SendPackageTelNum(shipments);
             }
         });
+
         pickUpPackageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new PickUpPackageTelNum();
+                new PickUpPackageTelNum(shipments);
             }
         });
+
         adminPanelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new AdminLoginPanel(shipments);
             }
         });
+
     }
 
     public static void main(String[] args) {
-
-
 
     }
 

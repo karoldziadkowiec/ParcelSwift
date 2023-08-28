@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +28,7 @@ public class AdminLoginPanel implements ActionListener{
     }
 
     private void initializeFrame() {
+
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -68,6 +68,7 @@ public class AdminLoginPanel implements ActionListener{
         leftInsidePanel.setBounds(40, 40, 270, 300);
         leftInsidePanel.setBackground(new Color(77, 77, 77));
         leftPanel.add(leftInsidePanel);
+
     }
 
     private void addComponents() {
@@ -95,6 +96,7 @@ public class AdminLoginPanel implements ActionListener{
         deleteButton.setForeground(Color.BLACK);
 
         for (int i = 0; i < 10; i++) {
+
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].addActionListener(this);
             numberButtons[i].setFont(appFont);
@@ -102,6 +104,7 @@ public class AdminLoginPanel implements ActionListener{
             numberButtons[i].setBackground(Color.WHITE);
             numberButtons[i].setForeground(Color.BLACK);
         }
+
         leftInsidePanel.add(numberButtons[7]);
         leftInsidePanel.add(numberButtons[8]);
         leftInsidePanel.add(numberButtons[9]);
@@ -139,9 +142,11 @@ public class AdminLoginPanel implements ActionListener{
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);
         mainPanel.add(backButton);
+
     }
 
     public void actionPerformed(ActionEvent e) {
+
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
                 pinTextField.setText(pinTextField.getText().concat(String.valueOf(i)));
@@ -157,10 +162,13 @@ public class AdminLoginPanel implements ActionListener{
                 pinTextField.setText(pinTextField.getText() + string.charAt(i));
             }
         }
+
     }
 
     private void ShowNewWindow() {
-        loginButton.addActionListener(new ActionListener() {
+
+        loginButton.addActionListener(new ActionListener()
+        {
             public void actionPerformed(ActionEvent e) {
                 String enteredPin = pinTextField.getText().trim();
 
@@ -172,13 +180,19 @@ public class AdminLoginPanel implements ActionListener{
                     JOptionPane.showMessageDialog(frame, "Please enter a valid parcel locker PIN.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
+
         });
-        backButton.addActionListener(new ActionListener() {
+
+        backButton.addActionListener(new ActionListener()
+        {
+
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new MainPanel(shipments);
             }
+
         });
+
     }
 
     public static void main(String[] args) {

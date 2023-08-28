@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,6 +27,7 @@ public class SendPackageSize {
     }
 
     private void initializeFrame() {
+
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -112,6 +112,7 @@ public class SendPackageSize {
     }
 
     private void ShowNewWindow() {
+
         String s = "S", m = "M", l = "L", xl = "XL";
 
         sButton.addActionListener(new ActionListener() {
@@ -144,9 +145,11 @@ public class SendPackageSize {
                 new SendPackageCode(shipments, phoneNumber);
             }
         });
+
     }
 
     private void handleButtonAction(String size) {
+
         boolean nullSizeFound = false;
 
         for (Shipment shipment : shipments) {
@@ -158,7 +161,8 @@ public class SendPackageSize {
 
         if (nullSizeFound) {
             JOptionPane.showMessageDialog(frame, "All available sizes are already selected. Please choose another size.");
-        } else {
+        }
+        else {
             boolean suitableShipmentFound = false;
 
             for (Shipment shipment : shipments) {
@@ -176,13 +180,13 @@ public class SendPackageSize {
                 frame.dispose();
                 new SendPackageSize(shipments, phoneNumber, code);
             }
+
         }
+
     }
 
 
     public static void main(String[] args) {
-
-
 
     }
 

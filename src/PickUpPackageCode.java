@@ -3,21 +3,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PickUpPackageTelNum implements ActionListener {
+public class PickUpPackageCode implements ActionListener{
+
     private JFrame frame;
     private JPanel mainPanel, upperPanel, leftPanel, leftInsidePanel;
     private JLabel logoLabel, instructionLabel;
     private JButton backButton, confirmButton;
     private JButton[] numberButtons = new JButton[10]; // numbers 0-9
     JButton deleteButton, clearButton;
-    private JTextField telNumTextField;
+    private JTextField codeTextField;
     private Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
 
     private java.util.List<Shipment> shipments;
+    String phoneNumber = null;
 
-    public PickUpPackageTelNum(java.util.List<Shipment> shipments) {
+    public PickUpPackageCode(java.util.List<Shipment> shipments, String phoNum) {
 
         this.shipments = shipments;
+        phoneNumber = phoNum;
 
         initializeFrame();
         addComponents();
@@ -48,18 +51,18 @@ public class PickUpPackageTelNum implements ActionListener {
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
 
+        leftPanel = new JPanel();
+        leftPanel.setLayout(null); // Changed to 4 rows, 3 columns
+        leftPanel.setBounds(0, 85, 350, 415);
+        leftPanel.setBackground(Color.WHITE);
+        mainPanel.add(leftPanel);
+
         logoLabel = new JLabel("ParcelSwift");
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
-        leftPanel = new JPanel();
-        leftPanel.setLayout(null); // Changed to 4 rows, 3 columns
-        leftPanel.setBounds(0, 85, 350, 415);
-        leftPanel.setBackground(Color.WHITE);
-        mainPanel.add(leftPanel);
 
         leftInsidePanel = new JPanel();
         leftInsidePanel.setLayout(new GridLayout(4, 3, 10, 10)); // Changed to 4 rows, 3 columns
@@ -71,11 +74,11 @@ public class PickUpPackageTelNum implements ActionListener {
 
     private void addComponents() {
 
-        telNumTextField = new JTextField();
-        telNumTextField.setBounds(378, 200, 280, 50);
-        telNumTextField.setBackground(Color.WHITE);
-        telNumTextField.setFont(appFont);
-        mainPanel.add(telNumTextField);
+        codeTextField = new JTextField();
+        codeTextField.setBounds(378, 200, 280, 50);
+        codeTextField.setBackground(Color.WHITE);
+        codeTextField.setFont(appFont);
+        mainPanel.add(codeTextField);
 
         clearButton = new JButton("C");
         clearButton.addActionListener(this);
@@ -115,7 +118,7 @@ public class PickUpPackageTelNum implements ActionListener {
         leftInsidePanel.add(clearButton);
         leftInsidePanel.add(deleteButton);
 
-        instructionLabel = new JLabel("Enter phone number below.");
+        instructionLabel = new JLabel("Enter the 6-digit code below.");
         instructionLabel.setFont(appFont);
         instructionLabel.setBounds(378, 150, 450, 50);
         mainPanel.add(instructionLabel);
@@ -140,35 +143,47 @@ public class PickUpPackageTelNum implements ActionListener {
 
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
-                telNumTextField.setText(telNumTextField.getText().concat(String.valueOf(i)));
+                codeTextField.setText(codeTextField.getText().concat(String.valueOf(i)));
             }
         }
         if (e.getSource() == clearButton) {
-            telNumTextField.setText("");
+            codeTextField.setText("");
         }
         if (e.getSource() == deleteButton) {
-            String string = telNumTextField.getText();
-            telNumTextField.setText("");
+            String string = codeTextField.getText();
+            codeTextField.setText("");
             for (int i = 0; i < string.length() - 1; i++) {
-                telNumTextField.setText(telNumTextField.getText() + string.charAt(i));
+                codeTextField.setText(codeTextField.getText() + string.charAt(i));
             }
         }
 
     }
 
-    private void ShowNewWindow() {
-
+    private void ShowNewWindow()
+    {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String phoneNumber = telNumTextField.getText().trim();
+                String code = codeTextField.getText().trim();
 
-                if (phoneNumber.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Please enter a valid telephone number.", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (phoneNumber.length() != 9) {
-                    JOptionPane.showMessageDialog(frame, "Telephone number must have exactly 9 digits.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (code.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please enter a valid code.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (code.length() != 6) {
+                    JOptionPane.showMessageDialog(frame, "Code must have exactly 6 digits.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    frame.dispose();
-                    new PickUpPackageCode(shipments, phoneNumber);
+                    boolean codeFound = false;
+
+                    for (Shipment shipment : shipments) {
+                        if (shipment.code != null && shipment.code.equals(code)) {
+                            codeFound = true;
+                            frame.dispose();
+                            new PickUpPackageLocker(shipments, phoneNumber, code);
+                            break;
+                        }
+                    }
+
+                    if (!codeFound) {
+                        JOptionPane.showMessageDialog(frame, "Invalid code. Please enter a valid code.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
@@ -176,7 +191,7 @@ public class PickUpPackageTelNum implements ActionListener {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new MainPanel(shipments);
+                new PickUpPackageTelNum(shipments);
             }
         });
 
@@ -186,4 +201,3 @@ public class PickUpPackageTelNum implements ActionListener {
 
     }
 }
-

@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +28,7 @@ public class SendPackageCode implements ActionListener {
     }
 
     private void initializeFrame() {
+
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -103,6 +103,7 @@ public class SendPackageCode implements ActionListener {
             numberButtons[i].setBackground(new Color(77, 77, 77));
             numberButtons[i].setForeground(Color.WHITE);
         }
+
         leftInsidePanel.add(numberButtons[7]);
         leftInsidePanel.add(numberButtons[8]);
         leftInsidePanel.add(numberButtons[9]);
@@ -137,6 +138,7 @@ public class SendPackageCode implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
                 codeTextField.setText(codeTextField.getText().concat(String.valueOf(i)));
@@ -152,9 +154,11 @@ public class SendPackageCode implements ActionListener {
                 codeTextField.setText(codeTextField.getText() + string.charAt(i));
             }
         }
+
     }
 
     private void ShowNewWindow() {
+
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String code = codeTextField.getText().trim();
@@ -164,22 +168,35 @@ public class SendPackageCode implements ActionListener {
                 } else if (code.length() != 6) {
                     JOptionPane.showMessageDialog(frame, "Code must have exactly 6 digits.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    frame.dispose();
-                    new SendPackageSize(shipments, phoneNumber, code);
+                    boolean codeExists = false;
+
+                    for (Shipment shipment : shipments) {
+                        if (shipment.code != null && shipment.code.equals(code)) {
+                            codeExists = true;
+                            break;
+                        }
+                    }
+
+                    if (codeExists) {
+                        JOptionPane.showMessageDialog(frame, "This code is already in use. Please enter a new code.", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        frame.dispose();
+                        new SendPackageSize(shipments, phoneNumber, code);
+                    }
                 }
             }
         });
+
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new SendPackageTelNum(shipments);
             }
         });
+
     }
 
     public static void main(String[] args) {
-
-
 
     }
 }

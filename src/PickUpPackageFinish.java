@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
-public class SendPackageFinish {
+public class PickUpPackageFinish {
 
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
@@ -11,21 +12,19 @@ public class SendPackageFinish {
     private JButton finishButton;
     private Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
 
-    private List<Shipment> shipments;
-    private String phoneNumber, code, size;
+    private java.util.List<Shipment> shipments;
+    private String phoneNumber, code;
 
-    public SendPackageFinish(List<Shipment> shipments, String phoNum, String cod, String sizee) {
+    public PickUpPackageFinish(List<Shipment> shipments, String phoNum, String cod) {
 
         this.shipments = shipments;
         phoneNumber = phoNum;
         code = cod;
-        size = sizee;
 
         initializeFrame();
         addComponents();
         ShowNewWindow();
         frame.setVisible(true);
-
     }
 
     private void initializeFrame() {
@@ -67,14 +66,14 @@ public class SendPackageFinish {
         logoImageLabel.setBounds(245, 90, openedIcon.getIconWidth(), openedIcon.getIconHeight());
         mainPanel.add(logoImageLabel);
 
-        instructionLabel = new JLabel("The parcel is inside.");
+        instructionLabel = new JLabel("The parcel is outside.");
         instructionLabel.setFont(appFont);
         instructionLabel.setBounds(235, 265, 450, 50);
         mainPanel.add(instructionLabel);
 
-        instructionLabel = new JLabel("The package has been sent successfully.");
+        instructionLabel = new JLabel("The package has been picked up successfully.");
         instructionLabel.setFont(appFont);
-        instructionLabel.setBounds(135, 295, 450, 50);
+        instructionLabel.setBounds(115, 295, 500, 50);
         mainPanel.add(instructionLabel);
 
         finishButton = new JButton("Finish");
@@ -83,7 +82,6 @@ public class SendPackageFinish {
         finishButton.setForeground(Color.WHITE);
         finishButton.setFont(appFont);
         mainPanel.add(finishButton);
-
     }
 
     private void ShowNewWindow() {
@@ -91,9 +89,11 @@ public class SendPackageFinish {
         finishButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (Shipment shipment : shipments) {
-                    if (shipment.size.equals(size) && shipment.code == null) {
-                        shipment.code = code;
-                        shipment.telNumOfSender = phoneNumber;
+                    if (shipment.code != null && shipment.code.equals(code)) {
+                        shipment.telNumOfReceiver = phoneNumber;
+                        shipment.code = null;
+                        shipment.telNumOfSender = null;
+                        shipment.telNumOfReceiver = null;
                         break;
                     }
                 }
@@ -110,6 +110,7 @@ public class SendPackageFinish {
         });
 
     }
+
 
     public static void main(String[] args) {
 
