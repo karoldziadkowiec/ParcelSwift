@@ -1,11 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-class ParcelSwift {
+public class MainPanel {
+
     JFrame frame;
     JPanel mainPanel, upperPanel;
     JLabel logoLabel, instructionLabel;
@@ -14,26 +13,14 @@ class ParcelSwift {
 
     private java.util.List<Shipment> shipments = new java.util.ArrayList<>();
 
-    ParcelSwift() {
+    MainPanel(java.util.List<Shipment> shipments) {
+
+        this.shipments = shipments;
+
         initializeFrame();
         addComponents();
         ShowNewWindow();
         frame.setVisible(true);
-
-        for(int i = 1; i <= 40; i++) {
-            String size;
-            if (i <= 10) {
-                size = "S";
-            } else if (i <= 20) {
-                size = "M";
-            } else if (i <= 30) {
-                size = "L";
-            } else {
-                size = "XL";
-            }
-            Shipment shipment = new Shipment(i, size,null, null, null);
-            shipments.add(shipment);
-        }
 
     }
 
@@ -130,12 +117,8 @@ class ParcelSwift {
 
     public static void main(String[] args) {
 
-        ParcelSwift mainWindow = new ParcelSwift();
-        for (Shipment shipment : mainWindow.shipments) {
-            System.out.println("Number: " + shipment.number + ", Size: " + shipment.size +
-                    ", Code: " + shipment.code + ", TelNumOfSender: " + shipment.telNumOfSender +
-                    ", TelNumOfReceiver: " + shipment.telNumOfReceiver);
-        }
+
+
     }
 
 }

@@ -4,21 +4,23 @@ import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AdminLoginPanel implements ActionListener{
+public class SendPackageCode implements ActionListener {
+
     private JFrame frame;
     private JPanel mainPanel, upperPanel, leftPanel, leftInsidePanel;
     private JLabel logoLabel, instructionLabel;
     private JButton backButton, confirmButton;
     private JButton[] numberButtons = new JButton[10]; // numbers 0-9
     JButton deleteButton, clearButton;
-    private JTextField telNumTextField;
+    private JTextField codeTextField;
     private Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
 
     private java.util.List<Shipment> shipments;
-
-    public AdminLoginPanel(java.util.List<Shipment> shipments) {
+    String phoneNumber = null;
+    public SendPackageCode(java.util.List<Shipment> shipments, String phoNum) {
 
         this.shipments = shipments;
+        phoneNumber = phoNum;
 
         initializeFrame();
         addComponents();
@@ -69,11 +71,11 @@ public class AdminLoginPanel implements ActionListener{
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
 
-        telNumTextField = new JTextField();
-        telNumTextField.setBounds(378, 200, 280, 50);
-        telNumTextField.setBackground(Color.WHITE);
-        telNumTextField.setFont(appFont);
-        mainPanel.add(telNumTextField);
+        codeTextField = new JTextField();
+        codeTextField.setBounds(378, 200, 280, 50);
+        codeTextField.setBackground(Color.WHITE);
+        codeTextField.setFont(appFont);
+        mainPanel.add(codeTextField);
 
         clearButton = new JButton("C");
         clearButton.addActionListener(this);
@@ -112,7 +114,7 @@ public class AdminLoginPanel implements ActionListener{
         leftInsidePanel.add(clearButton);
         leftInsidePanel.add(deleteButton);
 
-        instructionLabel = new JLabel("Enter phone number below.");
+        instructionLabel = new JLabel("Enter the 6-digit code below.");
         instructionLabel.setFont(appFont);
         instructionLabel.setBounds(378, 150, 450, 50);
         mainPanel.add(instructionLabel);
@@ -135,17 +137,17 @@ public class AdminLoginPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
-                telNumTextField.setText(telNumTextField.getText().concat(String.valueOf(i)));
+                codeTextField.setText(codeTextField.getText().concat(String.valueOf(i)));
             }
         }
         if (e.getSource() == clearButton) {
-            telNumTextField.setText("");
+            codeTextField.setText("");
         }
         if (e.getSource() == deleteButton) {
-            String string = telNumTextField.getText();
-            telNumTextField.setText("");
+            String string = codeTextField.getText();
+            codeTextField.setText("");
             for (int i = 0; i < string.length() - 1; i++) {
-                telNumTextField.setText(telNumTextField.getText() + string.charAt(i));
+                codeTextField.setText(codeTextField.getText() + string.charAt(i));
             }
         }
     }
@@ -153,27 +155,29 @@ public class AdminLoginPanel implements ActionListener{
     private void ShowNewWindow() {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String phoneNumber = telNumTextField.getText().trim();
+                String code = codeTextField.getText().trim();
 
-                if (phoneNumber.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Please enter a valid telephone number.", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (phoneNumber.length() != 9) {
-                    JOptionPane.showMessageDialog(frame, "Telephone number must have exactly 9 digits.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (code.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please enter a valid code.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (code.length() != 6) {
+                    JOptionPane.showMessageDialog(frame, "Code must have exactly 6 digits.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     frame.dispose();
-                    new SendPackageCode(shipments, phoneNumber);
+                    new SendPackageSize(shipments, phoneNumber, code);
                 }
             }
         });
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ParcelSwift();
+                new SendPackageTelNum(shipments);
             }
         });
     }
 
     public static void main(String[] args) {
+
+
 
     }
 }

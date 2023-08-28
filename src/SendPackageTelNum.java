@@ -12,7 +12,12 @@ public class SendPackageTelNum implements ActionListener {
     private JTextField telNumTextField;
     private Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
 
-    public SendPackageTelNum() {
+    private java.util.List<Shipment> shipments;
+
+    public SendPackageTelNum(java.util.List<Shipment> shipments) {
+
+        this.shipments = shipments;
+
         initializeFrame();
         addComponents();
         ShowNewWindow();
@@ -66,7 +71,6 @@ public class SendPackageTelNum implements ActionListener {
         telNumTextField.setBounds(378, 200, 280, 50);
         telNumTextField.setBackground(Color.WHITE);
         telNumTextField.setFont(appFont);
-        telNumTextField.setEditable(false);
         mainPanel.add(telNumTextField);
 
         clearButton = new JButton("C");
@@ -147,8 +151,16 @@ public class SendPackageTelNum implements ActionListener {
     private void ShowNewWindow() {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                //new SendPackageTelNum();
+                String phoneNumber = telNumTextField.getText().trim();
+
+                if (phoneNumber.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please enter a valid telephone number.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (phoneNumber.length() != 9) {
+                    JOptionPane.showMessageDialog(frame, "Telephone number must have exactly 9 digits.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    frame.dispose();
+                    new SendPackageCode(shipments, phoneNumber);
+                }
             }
         });
         backButton.addActionListener(new ActionListener() {
@@ -160,6 +172,6 @@ public class SendPackageTelNum implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SendPackageTelNum();
+
     }
 }
