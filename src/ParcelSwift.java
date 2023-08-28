@@ -77,7 +77,7 @@ class ParcelSwift {
 
         instructionLabel = new JLabel("Select the service want to use.");
         instructionLabel.setFont(appFont);
-        instructionLabel.setBounds(175, 225, 450, 50);
+        instructionLabel.setBounds(190, 225, 450, 50);
         mainPanel.add(instructionLabel);
 
         sendPackageButton = new JButton("Send package");
