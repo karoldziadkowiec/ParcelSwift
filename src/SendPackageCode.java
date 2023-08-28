@@ -56,20 +56,22 @@ public class SendPackageCode implements ActionListener {
         leftPanel.setBackground(Color.WHITE);
         mainPanel.add(leftPanel);
 
-        leftInsidePanel = new JPanel();
-        leftInsidePanel.setLayout(new GridLayout(4, 3, 10, 10)); // Changed to 4 rows, 3 columns
-        leftInsidePanel.setBounds(40, 40, 270, 300);
-        leftInsidePanel.setBackground(Color.WHITE);
-        leftPanel.add(leftInsidePanel);
-    }
-
-    private void addComponents() {
         logoLabel = new JLabel("ParcelSwift");
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
+
+        leftInsidePanel = new JPanel();
+        leftInsidePanel.setLayout(new GridLayout(4, 3, 10, 10)); // Changed to 4 rows, 3 columns
+        leftInsidePanel.setBounds(40, 40, 270, 300);
+        leftInsidePanel.setBackground(Color.WHITE);
+        leftPanel.add(leftInsidePanel);
+
+    }
+
+    private void addComponents() {
 
         codeTextField = new JTextField();
         codeTextField.setBounds(378, 200, 280, 50);

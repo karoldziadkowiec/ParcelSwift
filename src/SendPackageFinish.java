@@ -8,7 +8,7 @@ public class SendPackageFinish {
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
     private JLabel logoLabel, instructionLabel;
-    private JButton endButton;
+    private JButton finishButton;
     private Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
 
     private List<Shipment> shipments;
@@ -47,15 +47,17 @@ public class SendPackageFinish {
         upperPanel.setBounds(0, 0, 700, 85);
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
-    }
 
-    private void addComponents() {
         logoLabel = new JLabel("ParcelSwift");
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
+
+    }
+
+    private void addComponents() {
 
         ImageIcon openedIcon = new ImageIcon("parcelInside.png");
         JLabel logoImageLabel = new JLabel(openedIcon);
@@ -72,16 +74,16 @@ public class SendPackageFinish {
         instructionLabel.setBounds(135, 295, 450, 50);
         mainPanel.add(instructionLabel);
 
-        endButton = new JButton("Finish");
-        endButton.setBounds(235, 360, 200, 50);
-        endButton.setBackground(new Color(43, 43, 43));
-        endButton.setForeground(Color.WHITE);
-        endButton.setFont(appFont);
-        mainPanel.add(endButton);
+        finishButton = new JButton("Finish");
+        finishButton.setBounds(235, 360, 200, 50);
+        finishButton.setBackground(new Color(43, 43, 43));
+        finishButton.setForeground(Color.WHITE);
+        finishButton.setFont(appFont);
+        mainPanel.add(finishButton);
     }
 
     private void ShowNewWindow() {
-        endButton.addActionListener(new ActionListener() {
+        finishButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (Shipment shipment : shipments) {
                     if (shipment.size.equals(size) && shipment.code == null) {

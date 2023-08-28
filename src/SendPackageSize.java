@@ -49,16 +49,16 @@ public class SendPackageSize {
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
 
-    }
-
-    private void addComponents() {
-
         logoLabel = new JLabel("ParcelSwift");
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
+
+    }
+
+    private void addComponents() {
 
         ImageIcon parcelIcon = new ImageIcon("parcel.png");
         JLabel logoImageLabel = new JLabel(parcelIcon);

@@ -46,6 +46,13 @@ public class SendPackageTelNum implements ActionListener {
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
 
+        logoLabel = new JLabel("ParcelSwift");
+        logoLabel.setForeground(Color.WHITE);
+        Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
+        logoLabel.setFont(logoFont);
+        logoLabel.setBounds(205, 20, 350, 50);
+        upperPanel.add(logoLabel);
+
         leftPanel = new JPanel();
         leftPanel.setLayout(null); // Changed to 4 rows, 3 columns
         leftPanel.setBounds(0, 85, 350, 415);
@@ -60,12 +67,6 @@ public class SendPackageTelNum implements ActionListener {
     }
 
     private void addComponents() {
-        logoLabel = new JLabel("ParcelSwift");
-        logoLabel.setForeground(Color.WHITE);
-        Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
-        logoLabel.setFont(logoFont);
-        logoLabel.setBounds(205, 20, 350, 50);
-        upperPanel.add(logoLabel);
 
         telNumTextField = new JTextField();
         telNumTextField.setBounds(378, 200, 280, 50);
@@ -166,7 +167,7 @@ public class SendPackageTelNum implements ActionListener {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ParcelSwift();
+                new MainPanel(shipments);
             }
         });
     }

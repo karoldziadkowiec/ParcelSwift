@@ -60,16 +60,16 @@ class ParcelSwift {
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
 
-    }
-
-    private void addComponents() {
-
         logoLabel = new JLabel("ParcelSwift");
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
+
+    }
+
+    private void addComponents() {
 
         ImageIcon logoIcon = new ImageIcon("logo.png");
         JLabel logoImageLabel = new JLabel(logoIcon);
@@ -99,7 +99,7 @@ class ParcelSwift {
 
         adminPanelButton = new JButton("Admin panel");
         adminPanelButton.setLayout(null);
-        adminPanelButton.setBounds(260, 400, 180, 30);
+        adminPanelButton.setBounds(260, 400, 180, 40);
         adminPanelButton.setBackground(Color.WHITE);
         adminPanelButton.setForeground(new Color(43, 43, 43));
         adminPanelButton.setFont(appFont);

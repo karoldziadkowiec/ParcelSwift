@@ -8,13 +8,15 @@ public class AdminLoginPanel implements ActionListener{
     private JFrame frame;
     private JPanel mainPanel, upperPanel, leftPanel, leftInsidePanel;
     private JLabel logoLabel, instructionLabel;
-    private JButton backButton, confirmButton;
+    private JButton loginButton, backButton;
     private JButton[] numberButtons = new JButton[10]; // numbers 0-9
     JButton deleteButton, clearButton;
-    private JTextField telNumTextField;
+    private JTextField pinTextField;
     private Font appFont = new Font("Comic Sans MS", Font.TRUETYPE_FONT, 22);
 
     private java.util.List<Shipment> shipments;
+
+    private static String PIN = "777777";
 
     public AdminLoginPanel(java.util.List<Shipment> shipments) {
 
@@ -48,20 +50,6 @@ public class AdminLoginPanel implements ActionListener{
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
 
-        leftPanel = new JPanel();
-        leftPanel.setLayout(null); // Changed to 4 rows, 3 columns
-        leftPanel.setBounds(0, 85, 350, 415);
-        leftPanel.setBackground(Color.WHITE);
-        mainPanel.add(leftPanel);
-
-        leftInsidePanel = new JPanel();
-        leftInsidePanel.setLayout(new GridLayout(4, 3, 10, 10)); // Changed to 4 rows, 3 columns
-        leftInsidePanel.setBounds(40, 40, 270, 300);
-        leftInsidePanel.setBackground(Color.WHITE);
-        leftPanel.add(leftInsidePanel);
-    }
-
-    private void addComponents() {
         logoLabel = new JLabel("ParcelSwift");
         logoLabel.setForeground(Color.WHITE);
         Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
@@ -69,11 +57,26 @@ public class AdminLoginPanel implements ActionListener{
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
 
-        telNumTextField = new JTextField();
-        telNumTextField.setBounds(378, 200, 280, 50);
-        telNumTextField.setBackground(Color.WHITE);
-        telNumTextField.setFont(appFont);
-        mainPanel.add(telNumTextField);
+        leftPanel = new JPanel();
+        leftPanel.setLayout(null); // Changed to 4 rows, 3 columns
+        leftPanel.setBounds(0, 85, 350, 415);
+        leftPanel.setBackground(new Color(77, 77, 77));
+        mainPanel.add(leftPanel);
+
+        leftInsidePanel = new JPanel();
+        leftInsidePanel.setLayout(new GridLayout(4, 3, 10, 10)); // Changed to 4 rows, 3 columns
+        leftInsidePanel.setBounds(40, 40, 270, 300);
+        leftInsidePanel.setBackground(new Color(77, 77, 77));
+        leftPanel.add(leftInsidePanel);
+    }
+
+    private void addComponents() {
+
+        pinTextField = new JTextField();
+        pinTextField.setBounds(378, 230, 280, 50);
+        pinTextField.setBackground(Color.WHITE);
+        pinTextField.setFont(appFont);
+        mainPanel.add(pinTextField);
 
         clearButton = new JButton("C");
         clearButton.addActionListener(this);
@@ -88,16 +91,16 @@ public class AdminLoginPanel implements ActionListener{
         deleteButton.setFont(appFont);
         deleteButton.setFocusable(false);
         deleteButton.setBounds(245, 110, 105, 50);
-        deleteButton.setBackground(new Color(43, 43, 43));
-        deleteButton.setForeground(Color.WHITE);
+        deleteButton.setBackground(Color.WHITE);
+        deleteButton.setForeground(Color.BLACK);
 
         for (int i = 0; i < 10; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].addActionListener(this);
             numberButtons[i].setFont(appFont);
             numberButtons[i].setFocusable(false);
-            numberButtons[i].setBackground(new Color(77, 77, 77));
-            numberButtons[i].setForeground(Color.WHITE);
+            numberButtons[i].setBackground(Color.WHITE);
+            numberButtons[i].setForeground(Color.BLACK);
         }
         leftInsidePanel.add(numberButtons[7]);
         leftInsidePanel.add(numberButtons[8]);
@@ -112,20 +115,26 @@ public class AdminLoginPanel implements ActionListener{
         leftInsidePanel.add(clearButton);
         leftInsidePanel.add(deleteButton);
 
-        instructionLabel = new JLabel("Enter phone number below.");
-        instructionLabel.setFont(appFont);
-        instructionLabel.setBounds(378, 150, 450, 50);
+        instructionLabel = new JLabel("ADMIN PANEL");
+        Font adminFont = new Font("Comic Sans MS", Font.BOLD, 32);
+        instructionLabel.setFont(adminFont);
+        instructionLabel.setBounds(400, 120, 450, 50);
         mainPanel.add(instructionLabel);
 
-        confirmButton = new JButton("Confirm");
-        confirmButton.setBounds(440, 270, 218, 50);
-        confirmButton.setBackground(new Color(43, 43, 43));
-        confirmButton.setForeground(Color.WHITE);
-        confirmButton.setFont(appFont);
-        mainPanel.add(confirmButton);
+        instructionLabel = new JLabel("Enter the parcel locker PIN.");
+        instructionLabel.setFont(appFont);
+        instructionLabel.setBounds(378, 180, 450, 50);
+        mainPanel.add(instructionLabel);
+
+        loginButton = new JButton("Log in");
+        loginButton.setBounds(440, 300, 218, 50);
+        loginButton.setBackground(new Color(43, 43, 43));
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setFont(appFont);
+        mainPanel.add(loginButton);
 
         backButton = new JButton("Back");
-        backButton.setBounds(440, 330, 218, 50);
+        backButton.setBounds(440, 360, 218, 50);
         backButton.setBackground(new Color(43, 43, 43));
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);
@@ -135,40 +144,39 @@ public class AdminLoginPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
-                telNumTextField.setText(telNumTextField.getText().concat(String.valueOf(i)));
+                pinTextField.setText(pinTextField.getText().concat(String.valueOf(i)));
             }
         }
         if (e.getSource() == clearButton) {
-            telNumTextField.setText("");
+            pinTextField.setText("");
         }
         if (e.getSource() == deleteButton) {
-            String string = telNumTextField.getText();
-            telNumTextField.setText("");
+            String string = pinTextField.getText();
+            pinTextField.setText("");
             for (int i = 0; i < string.length() - 1; i++) {
-                telNumTextField.setText(telNumTextField.getText() + string.charAt(i));
+                pinTextField.setText(pinTextField.getText() + string.charAt(i));
             }
         }
     }
 
     private void ShowNewWindow() {
-        confirmButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String phoneNumber = telNumTextField.getText().trim();
+                String enteredPin = pinTextField.getText().trim();
 
-                if (phoneNumber.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Please enter a valid telephone number.", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (phoneNumber.length() != 9) {
-                    JOptionPane.showMessageDialog(frame, "Telephone number must have exactly 9 digits.", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
+                if (enteredPin.equals(PIN)) {
                     frame.dispose();
-                    new SendPackageCode(shipments, phoneNumber);
+                    new AdminInfoPanel(shipments, PIN);
+                }
+                else {
+                    JOptionPane.showMessageDialog(frame, "Please enter a valid parcel locker PIN.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ParcelSwift();
+                new MainPanel(shipments);
             }
         });
     }

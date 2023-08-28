@@ -52,6 +52,13 @@ public class SendPackageLocker {
         upperPanel.setBackground(new Color(43, 43, 43));
         mainPanel.add(upperPanel);
 
+        logoLabel = new JLabel("ParcelSwift");
+        logoLabel.setForeground(Color.WHITE);
+        Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
+        logoLabel.setFont(logoFont);
+        logoLabel.setBounds(205, 20, 350, 50);
+        upperPanel.add(logoLabel);
+
         timerLabel = new JLabel();
         timerLabel.setFont(appFont);
         timerLabel.setBounds(215, 315, 450, 50);
@@ -60,13 +67,6 @@ public class SendPackageLocker {
     }
 
     private void addComponents() {
-
-        logoLabel = new JLabel("ParcelSwift");
-        logoLabel.setForeground(Color.WHITE);
-        Font logoFont = new Font("Comic Sans MS", Font.BOLD, 50);
-        logoLabel.setFont(logoFont);
-        logoLabel.setBounds(205, 20, 350, 50);
-        upperPanel.add(logoLabel);
 
         ImageIcon openedIcon = new ImageIcon("opened.png");
         JLabel logoImageLabel = new JLabel(openedIcon);
