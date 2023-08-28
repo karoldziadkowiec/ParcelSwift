@@ -4,7 +4,7 @@ The project is a window application with an interface for the "ParcelSwift" stat
 
 Technologies used in the project: Java (Swing library).
 
-Project functions: entering the telephone number, shipping code, choosing the size of the package, the time for sending / receiving the package is counted down during acceptance, acceptance window, login function for the admin via PIN, preview of the status of boxes in the parcel locker. The List function was used to store data about lockers in the parcel locker. In the windows for entering the phone number, code and PIN, buttons 0-9 was added to make entering easier.
+Project features: entering the telephone number, shipping code, choosing the size of the package, the time for sending / receiving the package is counted down during acceptance, acceptance window, login function for the admin via PIN, preview of the status of boxes in the parcel locker. The List function was used to store data about lockers in the parcel locker. In the windows for entering the phone number, code and PIN, buttons 0-9 was added to make entering easier.
 
 Main Window:
 ![Main Window](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/1_.png)
