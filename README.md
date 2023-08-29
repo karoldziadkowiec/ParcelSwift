@@ -11,32 +11,32 @@ Main Window:
 
 SENDING A PACKAGE<br/>
 Entering a phone number:
-![Entering a phone number](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/2.png)
+![Entering a phone number](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/2_.png)
 
 Entering the shipment code:
-![Entering the shipment code](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/3.png)
+![Entering the shipment code](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/3_.png)
 
 Choosing a package size:
 ![Choosing a package size](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/4.png)
 
-Time fot putting the package in the locker:
+30 sec time for putting the package in the locker:
 ![Time fot putting the package in the locker](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/5.png)
 
 Confirmation window:
 ![Confirmation window](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/6.png)
 
 Admin panel:
-![Admin panel](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/7.png)
+![Admin panel](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/7_.png)
 
 Parcel locker data in the admin panel after putting the package in the locker:
 ![Parcel locker data in the admin panel](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/8.png)
 
 PICKING UP A PACKAGE<br/>
 Entering a phone number:
-![Entering a phone number:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/9.png)
+![Entering a phone number:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/9_.png)
 
 Entering the shipment code::
-![Entering the shipment code:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/10.png)
+![Entering the shipment code:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/10_.png)
 
 Time fot picking up the package from the locker:
 ![Time fot picking up the package from the locker](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/11.png)
