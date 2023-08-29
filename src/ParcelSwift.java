@@ -133,6 +133,7 @@ class ParcelSwift {
     public static void main(String[] args) {
 
         ParcelSwift mainWindow = new ParcelSwift();
+
         for (Shipment shipment : mainWindow.shipments) {
             System.out.println("Number: " + shipment.number + ", Size: " + shipment.size +
                     ", Code: " + shipment.code + ", TelNumOfSender: " + shipment.telNumOfSender +
