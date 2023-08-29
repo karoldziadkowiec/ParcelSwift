@@ -73,8 +73,13 @@ public class AdminLoginPanel implements ActionListener{
 
     private void addComponents() {
 
+        ImageIcon pinCodeIcon = new ImageIcon("pinCode.png");
+        JLabel logoImageLabel = new JLabel(pinCodeIcon);
+        logoImageLabel.setBounds(470, 130, pinCodeIcon.getIconWidth(), pinCodeIcon.getIconHeight());
+        mainPanel.add(logoImageLabel);
+
         pinTextField = new JTextField();
-        pinTextField.setBounds(378, 230, 280, 50);
+        pinTextField.setBounds(378, 250, 280, 50);
         pinTextField.setBackground(Color.WHITE);
         pinTextField.setFont(appFont);
         mainPanel.add(pinTextField);
@@ -121,23 +126,23 @@ public class AdminLoginPanel implements ActionListener{
         instructionLabel = new JLabel("ADMIN PANEL");
         Font adminFont = new Font("Comic Sans MS", Font.BOLD, 32);
         instructionLabel.setFont(adminFont);
-        instructionLabel.setBounds(400, 120, 450, 50);
+        instructionLabel.setBounds(400, 90, 450, 50);
         mainPanel.add(instructionLabel);
 
         instructionLabel = new JLabel("Enter the parcel locker PIN.");
         instructionLabel.setFont(appFont);
-        instructionLabel.setBounds(378, 180, 450, 50);
+        instructionLabel.setBounds(378, 210, 450, 50);
         mainPanel.add(instructionLabel);
 
         loginButton = new JButton("Log in");
-        loginButton.setBounds(440, 300, 218, 50);
+        loginButton.setBounds(440, 310, 218, 50);
         loginButton.setBackground(new Color(43, 43, 43));
         loginButton.setForeground(Color.WHITE);
         loginButton.setFont(appFont);
         mainPanel.add(loginButton);
 
         backButton = new JButton("Back");
-        backButton.setBounds(440, 360, 218, 50);
+        backButton.setBounds(440, 370, 218, 50);
         backButton.setBackground(new Color(43, 43, 43));
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);

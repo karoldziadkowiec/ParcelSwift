@@ -71,8 +71,13 @@ public class PickUpPackageTelNum implements ActionListener {
 
     private void addComponents() {
 
+        ImageIcon mobilePhoneIcon = new ImageIcon("mobilePhone.png");
+        JLabel logoImageLabel = new JLabel(mobilePhoneIcon);
+        logoImageLabel.setBounds(470, 95, mobilePhoneIcon.getIconWidth(), mobilePhoneIcon.getIconHeight());
+        mainPanel.add(logoImageLabel);
+
         telNumTextField = new JTextField();
-        telNumTextField.setBounds(378, 200, 280, 50);
+        telNumTextField.setBounds(378, 240, 280, 50);
         telNumTextField.setBackground(Color.WHITE);
         telNumTextField.setFont(appFont);
         mainPanel.add(telNumTextField);
@@ -117,18 +122,18 @@ public class PickUpPackageTelNum implements ActionListener {
 
         instructionLabel = new JLabel("Enter phone number below.");
         instructionLabel.setFont(appFont);
-        instructionLabel.setBounds(378, 150, 450, 50);
+        instructionLabel.setBounds(378, 190, 450, 50);
         mainPanel.add(instructionLabel);
 
         confirmButton = new JButton("Confirm");
-        confirmButton.setBounds(440, 270, 218, 50);
+        confirmButton.setBounds(440, 300, 218, 50);
         confirmButton.setBackground(new Color(43, 43, 43));
         confirmButton.setForeground(Color.WHITE);
         confirmButton.setFont(appFont);
         mainPanel.add(confirmButton);
 
         backButton = new JButton("Back");
-        backButton.setBounds(440, 330, 218, 50);
+        backButton.setBounds(440, 370, 218, 50);
         backButton.setBackground(new Color(43, 43, 43));
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);

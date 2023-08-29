@@ -74,8 +74,13 @@ public class PickUpPackageCode implements ActionListener{
 
     private void addComponents() {
 
+        ImageIcon codeIcon = new ImageIcon("code.png");
+        JLabel logoImageLabel = new JLabel(codeIcon);
+        logoImageLabel.setBounds(470, 95, codeIcon.getIconWidth(), codeIcon.getIconHeight());
+        mainPanel.add(logoImageLabel);
+
         codeTextField = new JTextField();
-        codeTextField.setBounds(378, 200, 280, 50);
+        codeTextField.setBounds(378, 240, 280, 50);
         codeTextField.setBackground(Color.WHITE);
         codeTextField.setFont(appFont);
         mainPanel.add(codeTextField);
@@ -120,18 +125,18 @@ public class PickUpPackageCode implements ActionListener{
 
         instructionLabel = new JLabel("Enter the 6-digit code below.");
         instructionLabel.setFont(appFont);
-        instructionLabel.setBounds(378, 150, 450, 50);
+        instructionLabel.setBounds(378, 190, 450, 50);
         mainPanel.add(instructionLabel);
 
         confirmButton = new JButton("Confirm");
-        confirmButton.setBounds(440, 270, 218, 50);
+        confirmButton.setBounds(440, 300, 218, 50);
         confirmButton.setBackground(new Color(43, 43, 43));
         confirmButton.setForeground(Color.WHITE);
         confirmButton.setFont(appFont);
         mainPanel.add(confirmButton);
 
         backButton = new JButton("Back");
-        backButton.setBounds(440, 330, 218, 50);
+        backButton.setBounds(440, 370, 218, 50);
         backButton.setBackground(new Color(43, 43, 43));
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);
