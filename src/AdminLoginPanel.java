@@ -15,7 +15,7 @@ public class AdminLoginPanel implements ActionListener{
 
     private java.util.List<Shipment> shipments;
 
-    private static String PIN = "777777";
+    private final String PIN = "777777";
 
     public AdminLoginPanel(java.util.List<Shipment> shipments) {
 
