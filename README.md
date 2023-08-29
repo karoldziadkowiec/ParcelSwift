@@ -19,7 +19,7 @@ Entering the shipment code:
 Choosing a package size:
 ![Choosing a package size](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/4.png)
 
-Time fot putting the package in the locker:
+30 sec time for putting the package in the locker:
 ![Time fot putting the package in the locker](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/5.png)
 
 Confirmation window:
