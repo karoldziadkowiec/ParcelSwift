@@ -15,17 +15,15 @@ public class SendPackageTelNum implements ActionListener {
     private java.util.List<Shipment> shipments;
 
     public SendPackageTelNum(java.util.List<Shipment> shipments) {
-
         this.shipments = shipments;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -65,11 +63,9 @@ public class SendPackageTelNum implements ActionListener {
         leftInsidePanel.setBounds(40, 40, 270, 300);
         leftInsidePanel.setBackground(Color.WHITE);
         leftPanel.add(leftInsidePanel);
-
     }
 
     private void addComponents() {
-
         ImageIcon mobilePhoneIcon = new ImageIcon("mobilePhone.png");
         JLabel logoImageLabel = new JLabel(mobilePhoneIcon);
         logoImageLabel.setBounds(470, 95, mobilePhoneIcon.getIconWidth(), mobilePhoneIcon.getIconHeight());
@@ -104,7 +100,6 @@ public class SendPackageTelNum implements ActionListener {
             numberButtons[i].setFocusable(false);
             numberButtons[i].setBackground(new Color(77, 77, 77));
             numberButtons[i].setForeground(Color.WHITE);
-
         }
 
         leftInsidePanel.add(numberButtons[7]);
@@ -138,11 +133,9 @@ public class SendPackageTelNum implements ActionListener {
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);
         mainPanel.add(backButton);
-
     }
 
     public void actionPerformed(ActionEvent e) {
-
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
                 telNumTextField.setText(telNumTextField.getText().concat(String.valueOf(i)));
@@ -158,11 +151,9 @@ public class SendPackageTelNum implements ActionListener {
                 telNumTextField.setText(telNumTextField.getText() + string.charAt(i));
             }
         }
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String phoneNumber = telNumTextField.getText().trim();
@@ -184,10 +175,9 @@ public class SendPackageTelNum implements ActionListener {
                 new MainPanel(shipments);
             }
         });
-
     }
 
     public static void main(String[] args) {
-
     }
+
 }

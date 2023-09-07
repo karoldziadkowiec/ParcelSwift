@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SendPackageSize {
-
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
     private JLabel logoLabel, instructionLabel;
@@ -15,19 +14,17 @@ public class SendPackageSize {
     String phoneNumber = null, code = null;
 
     public SendPackageSize(java.util.List<Shipment> shipments, String phoNum, String cod) {
-
         this.shipments = shipments;
         phoneNumber = phoNum;
         code = cod;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -55,11 +52,9 @@ public class SendPackageSize {
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
     }
 
     private void addComponents() {
-
         ImageIcon parcelIcon = new ImageIcon("parcel.png");
         JLabel logoImageLabel = new JLabel(parcelIcon);
         logoImageLabel.setBounds(285, 90, parcelIcon.getIconWidth(), parcelIcon.getIconHeight());
@@ -108,11 +103,9 @@ public class SendPackageSize {
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);
         mainPanel.add(backButton);
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         String s = "S", m = "M", l = "L", xl = "XL";
 
         sButton.addActionListener(new ActionListener() {
@@ -145,11 +138,9 @@ public class SendPackageSize {
                 new SendPackageCode(shipments, phoneNumber);
             }
         });
-
     }
 
     private void handleButtonAction(String size) {
-
         boolean nullSizeFound = false;
 
         for (Shipment shipment : shipments) {
@@ -180,14 +171,11 @@ public class SendPackageSize {
                 frame.dispose();
                 new SendPackageSize(shipments, phoneNumber, code);
             }
-
         }
-
     }
 
 
     public static void main(String[] args) {
-
     }
 
 }

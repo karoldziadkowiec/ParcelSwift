@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.util.List;
 
 public class SendPackageFinish {
-
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
     private JLabel logoLabel, instructionLabel;
@@ -15,7 +14,6 @@ public class SendPackageFinish {
     private String phoneNumber, code, size;
 
     public SendPackageFinish(List<Shipment> shipments, String phoNum, String cod, String sizee) {
-
         this.shipments = shipments;
         phoneNumber = phoNum;
         code = cod;
@@ -23,13 +21,11 @@ public class SendPackageFinish {
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
-
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -57,11 +53,9 @@ public class SendPackageFinish {
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
     }
 
     private void addComponents() {
-
         ImageIcon openedIcon = new ImageIcon("parcelInside.png");
         JLabel logoImageLabel = new JLabel(openedIcon);
         logoImageLabel.setBounds(245, 90, openedIcon.getIconWidth(), openedIcon.getIconHeight());
@@ -83,11 +77,9 @@ public class SendPackageFinish {
         finishButton.setForeground(Color.WHITE);
         finishButton.setFont(appFont);
         mainPanel.add(finishButton);
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         finishButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (Shipment shipment : shipments) {
@@ -108,10 +100,9 @@ public class SendPackageFinish {
                 new MainPanel(shipments);
             }
         });
-
     }
 
     public static void main(String[] args) {
-
     }
+
 }

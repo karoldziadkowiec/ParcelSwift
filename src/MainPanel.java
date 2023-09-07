@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainPanel {
-
     JFrame frame;
     JPanel mainPanel, upperPanel;
     JLabel logoLabel, instructionLabel;
@@ -14,18 +13,15 @@ public class MainPanel {
     private java.util.List<Shipment> shipments = new java.util.ArrayList<>();
 
     MainPanel(java.util.List<Shipment> shipments) {
-
         this.shipments = shipments;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
-
     }
 
     public void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -53,11 +49,9 @@ public class MainPanel {
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
     }
 
     private void addComponents() {
-
         ImageIcon logoIcon = new ImageIcon("logo.png");
         JLabel logoImageLabel = new JLabel(logoIcon);
         logoImageLabel.setBounds(260, 75, logoIcon.getIconWidth(), logoIcon.getIconHeight());
@@ -91,11 +85,9 @@ public class MainPanel {
         adminPanelButton.setForeground(new Color(43, 43, 43));
         adminPanelButton.setFont(appFont);
         mainPanel.add(adminPanelButton);
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         sendPackageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -116,11 +108,9 @@ public class MainPanel {
                 new AdminLoginPanel(shipments);
             }
         });
-
     }
 
     public static void main(String[] args) {
-
     }
 
 }

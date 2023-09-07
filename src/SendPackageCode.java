@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SendPackageCode implements ActionListener {
-
     private JFrame frame;
     private JPanel mainPanel, upperPanel, leftPanel, leftInsidePanel;
     private JLabel logoLabel, instructionLabel;
@@ -16,19 +15,18 @@ public class SendPackageCode implements ActionListener {
 
     private java.util.List<Shipment> shipments;
     String phoneNumber = null;
-    public SendPackageCode(java.util.List<Shipment> shipments, String phoNum) {
 
+    public SendPackageCode(java.util.List<Shipment> shipments, String phoNum) {
         this.shipments = shipments;
         phoneNumber = phoNum;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -68,11 +66,9 @@ public class SendPackageCode implements ActionListener {
         leftInsidePanel.setBounds(40, 40, 270, 300);
         leftInsidePanel.setBackground(Color.WHITE);
         leftPanel.add(leftInsidePanel);
-
     }
 
     private void addComponents() {
-
         ImageIcon codeIcon = new ImageIcon("code.png");
         JLabel logoImageLabel = new JLabel(codeIcon);
         logoImageLabel.setBounds(470, 95, codeIcon.getIconWidth(), codeIcon.getIconHeight());
@@ -143,7 +139,6 @@ public class SendPackageCode implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
                 codeTextField.setText(codeTextField.getText().concat(String.valueOf(i)));
@@ -159,11 +154,9 @@ public class SendPackageCode implements ActionListener {
                 codeTextField.setText(codeTextField.getText() + string.charAt(i));
             }
         }
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String code = codeTextField.getText().trim();
@@ -198,10 +191,9 @@ public class SendPackageCode implements ActionListener {
                 new SendPackageTelNum(shipments);
             }
         });
-
     }
 
     public static void main(String[] args) {
-
     }
+
 }

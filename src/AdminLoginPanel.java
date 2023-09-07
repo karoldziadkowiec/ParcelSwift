@@ -18,17 +18,15 @@ public class AdminLoginPanel implements ActionListener{
     private final String PIN = "777777";
 
     public AdminLoginPanel(java.util.List<Shipment> shipments) {
-
         this.shipments = shipments;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -68,11 +66,9 @@ public class AdminLoginPanel implements ActionListener{
         leftInsidePanel.setBounds(40, 40, 270, 300);
         leftInsidePanel.setBackground(new Color(77, 77, 77));
         leftPanel.add(leftInsidePanel);
-
     }
 
     private void addComponents() {
-
         ImageIcon pinCodeIcon = new ImageIcon("pinCode.png");
         JLabel logoImageLabel = new JLabel(pinCodeIcon);
         logoImageLabel.setBounds(470, 130, pinCodeIcon.getIconWidth(), pinCodeIcon.getIconHeight());
@@ -147,11 +143,9 @@ public class AdminLoginPanel implements ActionListener{
         backButton.setForeground(Color.WHITE);
         backButton.setFont(appFont);
         mainPanel.add(backButton);
-
     }
 
     public void actionPerformed(ActionEvent e) {
-
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
                 pinTextField.setText(pinTextField.getText().concat(String.valueOf(i)));
@@ -167,11 +161,9 @@ public class AdminLoginPanel implements ActionListener{
                 pinTextField.setText(pinTextField.getText() + string.charAt(i));
             }
         }
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         loginButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e) {
@@ -185,7 +177,6 @@ public class AdminLoginPanel implements ActionListener{
                     JOptionPane.showMessageDialog(frame, "Please enter a valid parcel locker PIN.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
         });
 
         backButton.addActionListener(new ActionListener()
@@ -197,10 +188,8 @@ public class AdminLoginPanel implements ActionListener{
             }
 
         });
-
     }
 
     public static void main(String[] args) {
-
     }
 }

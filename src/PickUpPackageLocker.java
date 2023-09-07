@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PickUpPackageLocker {
-
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
     private JLabel logoLabel, instructionLabel, instruction2Label, timerLabel;
@@ -17,19 +16,17 @@ public class PickUpPackageLocker {
     String phoneNumber = null, code = null;
 
     public PickUpPackageLocker(java.util.List<Shipment> shipments, String phoNum, String cod) {
-
         this.shipments = shipments;
         phoneNumber = phoNum;
         code = cod;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -62,11 +59,9 @@ public class PickUpPackageLocker {
         timerLabel.setFont(appFont);
         timerLabel.setBounds(215, 315, 450, 50);
         mainPanel.add(timerLabel);
-
     }
 
     private void addComponents() {
-
         ImageIcon openedIcon = new ImageIcon("opened.png");
         JLabel logoImageLabel = new JLabel(openedIcon);
         logoImageLabel.setBounds(265, 90, openedIcon.getIconWidth(), openedIcon.getIconHeight());
@@ -104,11 +99,9 @@ public class PickUpPackageLocker {
         mainPanel.add(backButton);
 
         startTimer();
-
     }
 
     private void startTimer() {
-
         timer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (secondsLeft > 0) {
@@ -122,22 +115,18 @@ public class PickUpPackageLocker {
             }
         });
         timer.start();
-
     }
 
     private void updateTimerLabel() {
-
         int minutes = secondsLeft / 60;
         int seconds = secondsLeft % 60;
         timerLabel.setBounds(240, 325, 450, 50);
         Font timerFont = new Font("Comic Sans MS", Font.BOLD, 26);
         timerLabel.setFont(timerFont);
         timerLabel.setText(String.format("Time left: %02d:%02d", minutes, seconds));
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         confirmButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -158,11 +147,9 @@ public class PickUpPackageLocker {
                 new PickUpPackageCode(shipments, phoneNumber);
             }
         });
-
     }
 
     public static void main(String[] args) {
-
     }
 
 }

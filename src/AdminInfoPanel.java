@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AdminInfoPanel {
-
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
     private JLabel logoLabel, instructionLabel;
@@ -17,15 +16,13 @@ public class AdminInfoPanel {
     String PIN = null;
 
     public AdminInfoPanel(java.util.List<Shipment> shipments, String pin) {
-
         this.shipments = shipments;
         PIN = pin;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
-
     }
 
     private void initializeFrame() {
@@ -56,11 +53,9 @@ public class AdminInfoPanel {
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
     }
 
     private void addComponents() {
-
         instructionLabel = new JLabel("See the details of the lockers in the ParcelSwift:");
         Font adminFont = new Font("Comic Sans MS", Font.BOLD, 24);
         instructionLabel.setFont(adminFont);
@@ -89,22 +84,18 @@ public class AdminInfoPanel {
             logoutButton.setForeground(Color.WHITE);
             logoutButton.setFont(appFont);
             mainPanel.add(logoutButton);
-
         }
 
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new AdminLoginPanel(shipments);
             }
         });
-
     }
 
     public static void main(String[] args) {
-
     }
 }

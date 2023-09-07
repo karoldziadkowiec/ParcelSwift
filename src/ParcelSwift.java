@@ -13,31 +13,14 @@ class ParcelSwift {
     private java.util.List<Shipment> shipments = new java.util.ArrayList<>();
 
     ParcelSwift() {
-
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
+        initializeShipments();
         frame.setVisible(true);
-
-        for(int i = 1; i <= 40; i++) {
-            String size;
-            if (i <= 10) {
-                size = "S";
-            } else if (i <= 20) {
-                size = "M";
-            } else if (i <= 30) {
-                size = "L";
-            } else {
-                size = "XL";
-            }
-            Shipment shipment = new Shipment(i, size,null, null, null);
-            shipments.add(shipment);
-        }
-
     }
 
     public void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -46,7 +29,7 @@ class ParcelSwift {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(null);
-
+ 
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.setBounds(0, 0, 700, 500);
@@ -65,11 +48,9 @@ class ParcelSwift {
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
     }
 
     private void addComponents() {
-
         ImageIcon logoIcon = new ImageIcon("logo.png");
         JLabel logoImageLabel = new JLabel(logoIcon);
         logoImageLabel.setBounds(260, 75, logoIcon.getIconWidth(), logoIcon.getIconHeight());
@@ -103,11 +84,9 @@ class ParcelSwift {
         adminPanelButton.setForeground(new Color(43, 43, 43));
         adminPanelButton.setFont(appFont);
         mainPanel.add(adminPanelButton);
-
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         sendPackageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -128,11 +107,17 @@ class ParcelSwift {
                 new AdminLoginPanel(shipments);
             }
         });
+    }
 
+    private void initializeShipments() {
+        for (int i = 1; i <= 40; i++) {
+            String size = (i <= 10) ? "S" : (i <= 20) ? "M" : (i <= 30) ? "L" : "XL";
+            Shipment shipment = new Shipment(i, size, null, null, null);
+            shipments.add(shipment);
+        }
     }
 
     public static void main(String[] args) {
-
         ParcelSwift mainWindow = new ParcelSwift();
 
         for (Shipment shipment : mainWindow.shipments) {
@@ -140,7 +125,5 @@ class ParcelSwift {
                     ", Code: " + shipment.code + ", TelNumOfSender: " + shipment.telNumOfSender +
                     ", TelNumOfReceiver: " + shipment.telNumOfReceiver);
         }
-
     }
-
 }

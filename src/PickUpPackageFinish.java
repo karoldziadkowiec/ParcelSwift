@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class PickUpPackageFinish {
-
     private JFrame frame;
     private JPanel mainPanel, upperPanel;
     private JLabel logoLabel, instructionLabel;
@@ -16,19 +15,17 @@ public class PickUpPackageFinish {
     private String phoneNumber, code;
 
     public PickUpPackageFinish(List<Shipment> shipments, String phoNum, String cod) {
-
         this.shipments = shipments;
         phoneNumber = phoNum;
         code = cod;
 
         initializeFrame();
         addComponents();
-        ShowNewWindow();
+        openNewWindow();
         frame.setVisible(true);
     }
 
     private void initializeFrame() {
-
         frame = new JFrame("ParcelSwift");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
@@ -56,11 +53,9 @@ public class PickUpPackageFinish {
         logoLabel.setFont(logoFont);
         logoLabel.setBounds(205, 20, 350, 50);
         upperPanel.add(logoLabel);
-
     }
 
     private void addComponents() {
-
         ImageIcon openedIcon = new ImageIcon("parcelInside.png");
         JLabel logoImageLabel = new JLabel(openedIcon);
         logoImageLabel.setBounds(245, 90, openedIcon.getIconWidth(), openedIcon.getIconHeight());
@@ -84,8 +79,7 @@ public class PickUpPackageFinish {
         mainPanel.add(finishButton);
     }
 
-    private void ShowNewWindow() {
-
+    private void openNewWindow() {
         finishButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (Shipment shipment : shipments) {
@@ -108,11 +102,9 @@ public class PickUpPackageFinish {
                 new MainPanel(shipments);
             }
         });
-
     }
 
 
     public static void main(String[] args) {
-
     }
 }
