@@ -28,13 +28,13 @@ public class SendPackageCode implements ActionListener {
 
     private void initializeFrame() {
         frame = new JFrame("ParcelSwift");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
         frame.setSize(700, 500);
-        ImageIcon icon = new ImageIcon("icon.png");
-        frame.setIconImage(icon.getImage());
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.setLayout(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ImageIcon icon = new ImageIcon("icon.png");
+        frame.setIconImage(icon.getImage());
 
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
