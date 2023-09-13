@@ -35,8 +35,8 @@ PICKING UP A PACKAGE<br/>
 Entering a phone number:
 ![Entering a phone number:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/9_.png)
 
-Entering the shipment code::
-![Entering the shipment code:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/10_.png)
+Entering the shipment code:
+![Entering the shipment code](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/10_.png)
 
 Time fot picking up the package from the locker:
 ![Time fot picking up the package from the locker](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/11.png)
@@ -45,4 +45,4 @@ Confirmation window:
 ![Confirmation window](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/12.png)
 
 Parcel locker data in the admin panel after picking up the package from the locker:
-![Parcel locker data in the admin panel:](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/13.png)
+![Parcel locker data in the admin panel](https://github.com/karoldziadkowiec/ParcelSwift/blob/master/photos/13.png)
